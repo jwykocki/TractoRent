@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel: Reservations</title>
+    <link rel="stylesheet" href="/styles.css">
+
+
+</head>
+<body>
+<h1>All reservations</h1>
+<a href="/admin-panel/reservations/add">
+    <button>Add reservation</button>
+</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Machine</th>
+        <th>User</th>
+        <th>Date</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% reservations.forEach(reservation => { %>
+        <tr>
+            <td><%= reservation.id %></td>
+            <td><%= reservation.Machine.name %></td>
+            <td><%= reservation.User.username %></td>
+            <td><%= reservation.date %></td>
+            <td>
+                <form action="/admin-panel/reservations/delete/<%= reservation.id %>" method="POST">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+    <% }); %>
+    </tbody>
+</table>
+</body>
+</html>

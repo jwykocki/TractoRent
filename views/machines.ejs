@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>List of machines</title>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+<h1>Machines</h1>
+<ul>
+    <% machines.forEach(machine => { %>
+        <li><%= machine.id %>: <strong><%= machine.name %></strong> - <%= machine.type %> - <%= machine.description %>
+            <a href="/machines/<%= machine.id %>" class="button">Check availability</a>
+            <a href="/reservations/new/<%= machine.id %>" class="button">Reserve</a>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>

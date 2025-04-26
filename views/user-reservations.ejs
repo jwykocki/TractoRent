@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>List of reservations</title>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+<h1>Your reservations</h1>
+<ul>
+    <% reservations.forEach(reservation => { %>
+        <li>
+            Reservation ID: <%= reservation.id %> -
+            Machine name: <%= reservation.Machine ? reservation.Machine.name : 'Usunięta maszyna' %> -
+            Date: <%= reservation.date %>
+
+            <form action="/reservations/<%= reservation.id %>" method="POST" style="display:inline;">
+                <input type="hidden" name="_method" value="DELETE">
+                <button type="submit">Remove</button>
+            </form>
+        </li>
+    <% }) %>
+</ul>
+</body>
+</html>

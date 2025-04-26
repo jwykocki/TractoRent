@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin Panel: Machines</title>
+    <link rel="stylesheet" href="/styles.css">
+
+</head>
+<body>
+<h1>Machines</h1>
+
+<a href="/admin-panel/machines/add">
+    <button>Add machine</button>
+</a>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Type</th>
+        <th>Description</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% machines.forEach(machine => { %>
+        <tr>
+            <td><%= machine.id %></td>
+            <td><%= machine.name %></td>
+            <td><%= machine.type %></td>
+            <td><%= machine.description %></td>
+            <td>
+                <form action="/admin-panel/machines/delete/<%= machine.id %>" method="POST" style="display:inline;">
+                    <button type="submit">Delete</button>
+                </form>
+                <a href="/admin-panel/machines/edit/<%= machine.id %>">
+                    <button>Modify</button>
+                </a>
+            </td>
+        </tr>
+    <% }); %>
+    </tbody>
+</table>
+</body>
+</html>
